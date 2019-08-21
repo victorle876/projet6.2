@@ -12,38 +12,75 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 public class SecteurDao implements SecteurDaoInterface<Secteur, String> {
-	SessionFactory sessionFactory;
+	private Session currentSession; 
+	private Transaction currentTransaction;
 	
 	public SecteurDao(){
 		
 	}
-    public void persist(Secteur entity) {
-        sessionFactory.getCurrentSession().save(entity);
+	private static SessionFactory getSessionFactory() {
+        Configuration configuration = new Configuration().configure();
+        StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
+                .applySettings(configuration.getProperties());
+        SessionFactory sessionFactory = configuration.buildSessionFactory(builder.build());
+        return sessionFactory;
+    }
+    
+    public Session openCurrentSessionwithTransaction() {
+        currentSession = getSessionFactory().openSession();
+        currentTransaction = currentSession.beginTransaction();
+        return currentSession;
+    }
+    public void closeCurrentSessionwithTransaction() {
+        currentTransaction.commit();
+        currentSession.close();
+    }
+    public Session openCurrentSession() {
+        currentSession = getSessionFactory().openSession();
+        return currentSession;
+    }
+    public Session getCurrentSession() {
+        return currentSession;
+    }
+    
+    public void setCurrentSession(Session currentSession) {
+        this.currentSession = currentSession;
+    }
+    
+    public void closeCurrentSession() {
+        currentSession.close();
+    }
+    
+    public void setCurrentTransaction(Transaction currentTransaction) {
+        this.currentTransaction = currentTransaction;
+    }
+    public void persist(Secteur secteur) {
+        getCurrentSession().save(secteur);
     }
  
-    public void update(Secteur entity) {
-    	 sessionFactory.getCurrentSession().update(entity);
+    public void update(Secteur secteur) {
+    	 getCurrentSession().update(secteur);
     }
  
     public Secteur findById(String id) {
-        Secteur Secteur = (Secteur)  sessionFactory.getCurrentSession().get(Secteur.class, id);
+        Secteur Secteur = (Secteur)  getCurrentSession().get(Secteur.class, id);
         return Secteur; 
     }
  
-    public void delete(Secteur entity) {
-    	 sessionFactory.getCurrentSession().delete(entity);
+    public void delete(Secteur secteur) {
+    	 getCurrentSession().delete(secteur);
     }
  
     @SuppressWarnings("unchecked")
     public List<Secteur> findAll() {
-        List<Secteur> Secteurs = (List<Secteur>)  sessionFactory.getCurrentSession().createQuery("from Secteur").list();
+        List<Secteur> Secteurs = (List<Secteur>)  getCurrentSession().createQuery("from Secteur").list();
         return Secteurs;
     }
  
     public void deleteAll() {
-        List<Secteur> entityList = findAll();
-        for (Secteur entity : entityList) {
-            delete(entity);
+        List<Secteur> secteurList = findAll();
+        for (Secteur secteur : secteurList) {
+            delete(secteur);
         }
     }
     

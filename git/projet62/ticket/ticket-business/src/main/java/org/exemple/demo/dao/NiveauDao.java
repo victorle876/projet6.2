@@ -19,7 +19,7 @@ public class NiveauDao implements NiveauDaoInterface<Niveau, String> {
 	public NiveauDao(){
 		
 	}
-	private static SessionFactory getSessionFactory() {
+    private static SessionFactory getSessionFactory() {
         Configuration configuration = new Configuration().configure();
         StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
                 .applySettings(configuration.getProperties());
@@ -40,33 +40,49 @@ public class NiveauDao implements NiveauDaoInterface<Niveau, String> {
         currentSession = getSessionFactory().openSession();
         return currentSession;
     }
-    public void persist(Niveau entity) {
-         sessionFactory.getCurrentSession().save(entity);
+    public Session getCurrentSession() {
+        return currentSession;
+    }
+    
+    public void setCurrentSession(Session currentSession) {
+        this.currentSession = currentSession;
+    }
+    
+    public void closeCurrentSession() {
+        currentSession.close();
+    }
+    
+    public void setCurrentTransaction(Transaction currentTransaction) {
+        this.currentTransaction = currentTransaction;
+    }
+    
+    public void persist(Niveau niveau) {
+         getCurrentSession().save(niveau);
     }
  
-    public void update(Niveau entity) {
-    	  sessionFactory.getCurrentSession().update(entity);
+    public void update(Niveau niveau) {
+    	  getCurrentSession().update(niveau);
     }
  
     public Niveau findById(String id) {
-        Niveau Niveau = (Niveau)   sessionFactory.getCurrentSession().get(Niveau.class, id);
+        Niveau Niveau = (Niveau)   getCurrentSession().get(Niveau.class, id);
         return Niveau; 
     }
  
-    public void delete(Niveau entity) {
-    	  sessionFactory.getCurrentSession().delete(entity);
+    public void delete(Niveau niveau) {
+    	  getCurrentSession().delete(niveau);
     }
  
     @SuppressWarnings("unchecked")
     public List<Niveau> findAll() {
-        List<Niveau> Niveaux = (List<Niveau>)   sessionFactory.getCurrentSession().createQuery("from Niveau").list();
+        List<Niveau> Niveaux = (List<Niveau>)getCurrentSession().createQuery("from Niveau").list();
         return Niveaux;
     }
  
     public void deleteAll() {
-        List<Niveau> entityList = findAll();
-        for (Niveau entity : entityList) {
-            delete(entity);
+        List<Niveau> niveauList = findAll();
+        for (Niveau niveau : niveauList) {
+            delete(niveau);
         }
     }
 }

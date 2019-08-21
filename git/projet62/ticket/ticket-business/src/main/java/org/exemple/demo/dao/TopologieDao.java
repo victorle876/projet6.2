@@ -12,38 +12,75 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 public class TopologieDao implements TopologieDaoInterface<Topologie, String> {
-	SessionFactory sessionFactory;
+	private Session currentSession; 
+	private Transaction currentTransaction;
 	
 	public TopologieDao(){
 		
 	}
-    public void persist(Topologie entity) {
-        sessionFactory.getCurrentSession().save(entity);
+	private static SessionFactory getSessionFactory() {
+        Configuration configuration = new Configuration().configure();
+        StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
+                .applySettings(configuration.getProperties());
+        SessionFactory sessionFactory = configuration.buildSessionFactory(builder.build());
+        return sessionFactory;
+    }
+    
+    public Session openCurrentSessionwithTransaction() {
+        currentSession = getSessionFactory().openSession();
+        currentTransaction = currentSession.beginTransaction();
+        return currentSession;
+    }
+    public void closeCurrentSessionwithTransaction() {
+        currentTransaction.commit();
+        currentSession.close();
+    }
+    public Session openCurrentSession() {
+        currentSession = getSessionFactory().openSession();
+        return currentSession;
+    }
+    public Session getCurrentSession() {
+        return currentSession;
+    }
+    
+    public void setCurrentSession(Session currentSession) {
+        this.currentSession = currentSession;
+    }
+    
+    public void closeCurrentSession() {
+        currentSession.close();
+    }
+    
+    public void setCurrentTransaction(Transaction currentTransaction) {
+        this.currentTransaction = currentTransaction;
+    }
+    public void persist(Topologie topologie) {
+        getCurrentSession().save(topologie);
     }
  
-    public void update(Topologie entity) {
-    	 sessionFactory.getCurrentSession().update(entity);
+    public void update(Topologie topologie) {
+    	 getCurrentSession().update(topologie);
     }
  
     public Topologie findById(String id) {
-        Topologie Topologie = (Topologie)  sessionFactory.getCurrentSession().get(Topologie.class, id);
+        Topologie Topologie = (Topologie)  getCurrentSession().get(Topologie.class, id);
         return Topologie; 
     }
  
-    public void delete(Topologie entity) {
-    	 sessionFactory.getCurrentSession().delete(entity);
+    public void delete(Topologie topologie) {
+    	 getCurrentSession().delete(topologie);
     }
  
     @SuppressWarnings("unchecked")
     public List<Topologie> findAll() {
-        List<Topologie> Topologies = (List<Topologie>)  sessionFactory.getCurrentSession().createQuery("from Topologie").list();
+        List<Topologie> Topologies = (List<Topologie>)  getCurrentSession().createQuery("from Topologie").list();
         return Topologies;
     }
  
     public void deleteAll() {
-        List<Topologie> entityList = findAll();
-        for (Topologie entity : entityList) {
-            delete(entity);
+        List<Topologie> topologieList = findAll();
+        for (Topologie topologie : topologieList) {
+            delete(topologie);
         }
     }
 }

@@ -14,7 +14,6 @@ import org.hibernate.cfg.Configuration;
 
 public class CommentaireDao implements CommentaireDaoInterface<Commentaire, String> {
 
-	SessionFactory sessionFactory;
 	private Session currentSession;
 	private Transaction currentTransaction;
 
@@ -23,57 +22,70 @@ public class CommentaireDao implements CommentaireDaoInterface<Commentaire, Stri
 	}
 
 	private static SessionFactory getSessionFactory() {
-		Configuration configuration = new Configuration().configure();
-		StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
-				.applySettings(configuration.getProperties());
-		SessionFactory sessionFactory = configuration.buildSessionFactory(builder.build());
-		return sessionFactory;
-	}
-
-	public Session openCurrentSessionwithTransaction() {
-		currentSession = getSessionFactory().openSession();
-		currentTransaction = currentSession.beginTransaction();
-		return currentSession;
-	}
-
-	public void closeCurrentSessionwithTransaction() {
-		currentTransaction.commit();
-		currentSession.close();
-	}
-
-	public Session openCurrentSession() {
-		currentSession = getSessionFactory().openSession();
-		return currentSession;
-	}
+        Configuration configuration = new Configuration().configure();
+        StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
+                .applySettings(configuration.getProperties());
+        SessionFactory sessionFactory = configuration.buildSessionFactory(builder.build());
+        return sessionFactory;
+    }
+    
+    public Session openCurrentSessionwithTransaction() {
+        currentSession = getSessionFactory().openSession();
+        currentTransaction = currentSession.beginTransaction();
+        return currentSession;
+    }
+    public void closeCurrentSessionwithTransaction() {
+        currentTransaction.commit();
+        currentSession.close();
+    }
+    public Session openCurrentSession() {
+        currentSession = getSessionFactory().openSession();
+        return currentSession;
+    }
+    public Session getCurrentSession() {
+        return currentSession;
+    }
+    
+    public void setCurrentSession(Session currentSession) {
+        this.currentSession = currentSession;
+    }
+    
+    public void closeCurrentSession() {
+        currentSession.close();
+    }
+    
+    public void setCurrentTransaction(Transaction currentTransaction) {
+        this.currentTransaction = currentTransaction;
+    }
 
 	public void persist(Commentaire commentaire) {
-		sessionFactory.getCurrentSession().save(commentaire);
+		getCurrentSession().save(commentaire);
 	}
 
 	public void update(Commentaire commentaire) {
-		sessionFactory.getCurrentSession().update(commentaire);
+		getCurrentSession().update(commentaire);
 	}
 
 	public Commentaire findById(String id) {
-		Commentaire Commentaire = (Commentaire) sessionFactory.getCurrentSession().get(Commentaire.class, id);
+		Commentaire Commentaire = (Commentaire) getCurrentSession().get(Commentaire.class, id);
 		return Commentaire;
 	}
 
 	public void delete(Commentaire commentaire) {
-		sessionFactory.getCurrentSession().delete(commentaire);
+		getCurrentSession().delete(commentaire);
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<Commentaire> findAll() {
-		List<Commentaire> Commentaires = (List<Commentaire>) sessionFactory.getCurrentSession()
+		List<Commentaire> Commentaires = (List<Commentaire>) getCurrentSession()
 				.createQuery("from Commentaire").list();
 		return Commentaires;
 	}
 
 	public void deleteAll() {
-		List<Commentaire> entityList = findAll();
-		for (Commentaire entity : entityList) {
-			delete(entity);
+		List<Commentaire> commentaireList = findAll();
+		for (Commentaire commentaire : commentaireList) {
+			delete(commentaire);
 		}
 	}
 

@@ -13,14 +13,13 @@ import org.hibernate.cfg.Configuration;
 
 public class CotationDao implements CotationDaoInterface<Cotation, String> {
 
-	SessionFactory sessionFactory;
 	private Session currentSession; 
 	private Transaction currentTransaction;
 	
 	public CotationDao(){
 		
 	}
-    private static SessionFactory getSessionFactory() {
+	private static SessionFactory getSessionFactory() {
         Configuration configuration = new Configuration().configure();
         StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
                 .applySettings(configuration.getProperties());
@@ -41,33 +40,49 @@ public class CotationDao implements CotationDaoInterface<Cotation, String> {
         currentSession = getSessionFactory().openSession();
         return currentSession;
     }
-    public void persist(Cotation entity) {
-        sessionFactory.getCurrentSession().save(entity);
+    public Session getCurrentSession() {
+        return currentSession;
+    }
+    
+    public void setCurrentSession(Session currentSession) {
+        this.currentSession = currentSession;
+    }
+    
+    public void closeCurrentSession() {
+        currentSession.close();
+    }
+    
+    public void setCurrentTransaction(Transaction currentTransaction) {
+        this.currentTransaction = currentTransaction;
+    }
+    
+    public void persist(Cotation cotation) {
+        getCurrentSession().save(cotation);
     }
  
-    public void update(Cotation entity) {
-    	 sessionFactory.getCurrentSession().update(entity);
+    public void update(Cotation cotation) {
+    	 getCurrentSession().update(cotation);
     }
  
     public Cotation findById(String id) {
-        Cotation Cotation = (Cotation)  sessionFactory.getCurrentSession().get(Cotation.class, id);
+        Cotation Cotation = (Cotation)  getCurrentSession().get(Cotation.class, id);
         return Cotation; 
     }
  
-    public void delete(Cotation entity) {
-    	 sessionFactory.getCurrentSession().delete(entity);
+    public void delete(Cotation cotation) {
+    	 getCurrentSession().delete(cotation);
     }
  
     @SuppressWarnings("unchecked")
     public List<Cotation> findAll() {
-        List<Cotation> Cotations = (List<Cotation>)  sessionFactory.getCurrentSession().createQuery("from Cotation").list();
+        List<Cotation> Cotations = (List<Cotation>)  getCurrentSession().createQuery("from Cotation").list();
         return Cotations;
     }
  
     public void deleteAll() {
-        List<Cotation> entityList = findAll();
-        for (Cotation entity : entityList) {
-            delete(entity);
+        List<Cotation> cotationList = findAll();
+        for (Cotation cotation : cotationList) {
+            delete(cotation);
         }
     }
 }
