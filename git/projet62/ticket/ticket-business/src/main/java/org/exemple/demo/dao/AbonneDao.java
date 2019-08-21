@@ -14,17 +14,45 @@ import java.util.List;
  /* public interface AbonneDao { */
 public class AbonneDao implements AbonneDaoInterface<Abonne, String> {
 	SessionFactory sessionFactory;
+	private Session currentSession; 
+	private Transaction currentTransaction;
+	private Abonne Abonne;
 	
 	public AbonneDao(){
 		
 	}
-    public void persist(Abonne entity) {
+    private static SessionFactory getSessionFactory() {
+        Configuration configuration = new Configuration().configure();
+        StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
+                .applySettings(configuration.getProperties());
+        SessionFactory sessionFactory = configuration.buildSessionFactory(builder.build());
+        return sessionFactory;
+    }
+    
+    public Session openCurrentSessionwithTransaction() {
+        currentSession = getSessionFactory().openSession();
+        currentTransaction = currentSession.beginTransaction();
+        return currentSession;
+    }
+    public void closeCurrentSessionwithTransaction() {
+        currentTransaction.commit();
+        currentSession.close();
+    }
+    public Session openCurrentSession() {
+        currentSession = getSessionFactory().openSession();
+        return currentSession;
+    }
+    
+    public void closeCurrentSession() {
+        currentSession.close();
+    }
+    public void persist(Abonne abonne) {
     	
-    	sessionFactory.getCurrentSession().save(entity);
+    	sessionFactory.getCurrentSession().save(abonne);
     }
  
-    public void update(Abonne entity) {
-    	sessionFactory.getCurrentSession().update(entity);
+    public void update(Abonne abonne) {
+    	sessionFactory.getCurrentSession().update(abonne);
     }
  
     public Abonne findById(String id) {
@@ -32,8 +60,8 @@ public class AbonneDao implements AbonneDaoInterface<Abonne, String> {
         return Abonne; 
     }
  
-    public void delete(Abonne entity) {
-    	sessionFactory.getCurrentSession().delete(entity);
+    public void delete(Abonne abonne) {
+    	sessionFactory.getCurrentSession().delete(abonne);
     }
  
     @SuppressWarnings("unchecked")
@@ -43,9 +71,9 @@ public class AbonneDao implements AbonneDaoInterface<Abonne, String> {
     }
  
     public void deleteAll() {
-        List<Abonne> entityList = findAll();
-        for (Abonne entity : entityList) {
-            delete(entity);
+        List<Abonne> abonneList = findAll();
+        for (Abonne abonne : abonneList) {
+            delete(abonne);
         }
     }
 	

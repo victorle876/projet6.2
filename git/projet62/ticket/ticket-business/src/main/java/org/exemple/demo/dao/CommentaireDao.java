@@ -15,9 +15,35 @@ import org.hibernate.cfg.Configuration;
 public class CommentaireDao implements CommentaireDaoInterface<Commentaire, String> {
 
 	SessionFactory sessionFactory;
+	private Session currentSession;
+	private Transaction currentTransaction;
 
-public CommentaireDao(){
-		
+	public CommentaireDao() {
+
+	}
+
+	private static SessionFactory getSessionFactory() {
+		Configuration configuration = new Configuration().configure();
+		StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
+				.applySettings(configuration.getProperties());
+		SessionFactory sessionFactory = configuration.buildSessionFactory(builder.build());
+		return sessionFactory;
+	}
+
+	public Session openCurrentSessionwithTransaction() {
+		currentSession = getSessionFactory().openSession();
+		currentTransaction = currentSession.beginTransaction();
+		return currentSession;
+	}
+
+	public void closeCurrentSessionwithTransaction() {
+		currentTransaction.commit();
+		currentSession.close();
+	}
+
+	public Session openCurrentSession() {
+		currentSession = getSessionFactory().openSession();
+		return currentSession;
 	}
 
 	public void persist(Commentaire entity) {
