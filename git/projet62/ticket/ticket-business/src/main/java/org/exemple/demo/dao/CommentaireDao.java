@@ -46,12 +46,12 @@ public class CommentaireDao implements CommentaireDaoInterface<Commentaire, Stri
 		return currentSession;
 	}
 
-	public void persist(Commentaire entity) {
-		sessionFactory.getCurrentSession().save(entity);
+	public void persist(Commentaire commentaire) {
+		sessionFactory.getCurrentSession().save(commentaire);
 	}
 
-	public void update(Commentaire entity) {
-		sessionFactory.getCurrentSession().update(entity);
+	public void update(Commentaire commentaire) {
+		sessionFactory.getCurrentSession().update(commentaire);
 	}
 
 	public Commentaire findById(String id) {
@@ -59,8 +59,8 @@ public class CommentaireDao implements CommentaireDaoInterface<Commentaire, Stri
 		return Commentaire;
 	}
 
-	public void delete(Commentaire entity) {
-		sessionFactory.getCurrentSession().delete(entity);
+	public void delete(Commentaire commentaire) {
+		sessionFactory.getCurrentSession().delete(commentaire);
 	}
 
 	@SuppressWarnings("unchecked")
