@@ -1,1 +1,9 @@
+org/exemple/demo/entities/Secteur.class
+org/exemple/demo/entities/Site.class
+org/exemple/demo/entities/Reservation.class
 org/exemple/demo/model/App.class
+org/exemple/demo/entities/Commentaire.class
+org/exemple/demo/entities/Abonne.class
+org/exemple/demo/entities/Niveau.class
+org/exemple/demo/entities/Topologie.class
+org/exemple/demo/entities/Cotation.class

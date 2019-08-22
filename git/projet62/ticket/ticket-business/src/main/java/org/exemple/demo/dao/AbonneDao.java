@@ -1,5 +1,5 @@
 package org.exemple.demo.dao;
-import org.exemple.demo.hibernate.util.*;
+//import org.exemple.demo.hibernate.util.*;
 
 import org.exemple.demo.entities.*;
 import org.exemple.demo.daoInterface.*;
@@ -11,12 +11,10 @@ import org.hibernate.cfg.Configuration;
 
 import java.util.List;
 
- /* public interface AbonneDao { */
 public class AbonneDao implements AbonneDaoInterface<Abonne, String> {
-    //private	SessionFactory sessionFactory;
 	private Session currentSession; 
 	private Transaction currentTransaction;
-//	private Abonne Abonne;
+
 	
 	public AbonneDao(){
 		
