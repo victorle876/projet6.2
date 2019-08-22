@@ -25,7 +25,5 @@
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/jackrussell/Downloads/hibernate-release-5.4.4.Final/lib/required/javax.persistence-api-2.2.jar"/>
-	<classpathentry kind="lib" path="/Users/jackrussell/Downloads/hibernate-release-5.4.4.Final/lib/required/hibernate-core-5.4.4.Final.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
