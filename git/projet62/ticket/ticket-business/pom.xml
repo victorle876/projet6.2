@@ -38,6 +38,12 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>5.4.4.Final</version>
 		</dependency>
+		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>persistence-api</artifactId>
+			<version>2.2</version>
+			<scope>provided</scope>
+		</dependency>
 
 		<!-- ===== Bibliothèques tierces ===== -->
 		<!-- JUnit -->
