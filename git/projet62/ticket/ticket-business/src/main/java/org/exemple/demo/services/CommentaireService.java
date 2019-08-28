@@ -1,6 +1,8 @@
 package org.exemple.demo.services;
 import java.util.List;
 import javax.persistence.*;
+
+import org.exemple.demo.consumer.dao.CommentaireDao;
 import org.exemple.demo.dao.*;
 import org.exemple.demo.entities.*;
 import org.hibernate.Session;

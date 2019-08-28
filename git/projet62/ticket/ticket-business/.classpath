@@ -25,5 +25,6 @@
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="target/hibernate-core-5.4.4.Final.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
