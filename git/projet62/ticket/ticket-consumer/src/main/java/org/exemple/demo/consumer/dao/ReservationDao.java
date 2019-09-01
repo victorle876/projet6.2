@@ -2,8 +2,7 @@ package org.exemple.demo.consumer.dao;
 
 import java.util.List;
 import org.exemple.demo.entities.Reservation;
-
-import org.exemple.demo.daoInterface.*;
+import org.exemple.demo.consumer.daoInterface.ReservationDaoInterface;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;

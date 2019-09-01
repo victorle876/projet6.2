@@ -3,7 +3,7 @@ package org.exemple.demo.consumer.dao;
 import java.util.List;
 
 import org.exemple.demo.entities.Niveau;
-import org.exemple.demo.daoInterface.*;
+import org.exemple.demo.consumer.daoInterface.NiveauDaoInterface;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;

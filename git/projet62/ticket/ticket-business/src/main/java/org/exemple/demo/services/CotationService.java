@@ -3,7 +3,7 @@ import java.util.List;
 import javax.persistence.*;
 
 import org.exemple.demo.consumer.dao.CotationDao;
-import org.exemple.demo.dao.*;
+import org.exemple.demo.consumer.dao.*;dao.*;
 import org.exemple.demo.entities.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.exemple.demo.entities.Secteur;
 import org.exemple.demo.consumer.daoInterface.SecteurDaoInterface;
-import org.exemple.demo.daoInterface.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;

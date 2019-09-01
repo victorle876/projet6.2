@@ -1,10 +1,9 @@
 package org.exemple.demo.consumer.dao;
-import org.exemple.demo.daoInterface.*;
 
 import java.util.List;
 
+import org.exemple.demo.consumer.daoInterface.TopologieDaoInterface;
 import org.exemple.demo.entities.Topologie;
-import org.exemple.demo.daoInterface.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;

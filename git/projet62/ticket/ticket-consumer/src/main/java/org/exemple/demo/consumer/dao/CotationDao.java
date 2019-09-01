@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.exemple.demo.entities.Cotation;
 import org.exemple.demo.entities.*;
-import org.exemple.demo.daoInterface.*;
+import org.exemple.demo.consumer.daoInterface.CotationDaoInterface;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;

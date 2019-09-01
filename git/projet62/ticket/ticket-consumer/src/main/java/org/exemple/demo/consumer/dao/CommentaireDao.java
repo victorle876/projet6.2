@@ -1,6 +1,6 @@
 package org.exemple.demo.consumer.dao;
 
-import org.exemple.demo.daoInterface.*;
+import org.exemple.demo.consumer.daoInterface.CommentaireDaoInterface;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
-public class CommentaireDao implements CommentaireDaoInterface<Commentaire, String> {
+public class CommentaireDao implements org.exemple.demo.consumer.daoInterface.CommentaireDaoInterface<Commentaire, String> {
 
 	private Session currentSession;
 	private Transaction currentTransaction;

@@ -1,8 +1,8 @@
 package org.exemple.demo.consumer.dao;
 //import org.exemple.demo.hibernate.util.*;
-
+import javax.persistence.*;
+import org.exemple.demo.consumer.daoInterface.AbonneDaoInterface;
 import org.exemple.demo.entities.*;
-import org.exemple.demo.daoInterface.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
