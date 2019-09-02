@@ -14,6 +14,19 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "ABONNE")
 public class Abonne implements Serializable {
+	
+    private String nom_abonne ;
+	
+    private String prenom_abonne ;
+	
+    private String date_naissance ;
+	
+    private String password ;
+
+    private String role_abonne ;
+    private String mail_abonne ;
+    private String date_adhesion ;
+    private String niveau_abonne ;
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
@@ -28,7 +41,6 @@ public class Abonne implements Serializable {
     }
 
     @Column(length=45)
-    private String nom_abonne ;
     public String getNom_abonne() {
         return nom_abonne;
     }
@@ -38,7 +50,7 @@ public class Abonne implements Serializable {
     }
 
     @Column(length=45)
-    private String prenom_abonne ;
+
     public String getPrenom_abonne() {
         return prenom_abonne;
     }
@@ -47,7 +59,7 @@ public class Abonne implements Serializable {
         this.prenom_abonne = prenom_abonne;
     }
 
-    private String date_naissance ;
+
 
     public String getPassword() {
         return password;
@@ -56,14 +68,6 @@ public class Abonne implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    private String password ;
-
-    private String role_abonne ;
-    private String mail_abonne ;
-    private String date_adhesion ;
-    private String niveau_abonne ;
-
 
     public String getDate_naissance() {
         return date_naissance;
