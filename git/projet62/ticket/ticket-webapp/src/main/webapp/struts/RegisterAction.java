@@ -1,4 +1,5 @@
 package org.demo.webapp.struts.ActionSupport;
+import com.opensymphony.xwork2.Action.*;
 
 import org.exemple.demo.entities.*;
 import org.exemple.demo.consumer.dao.*;
@@ -9,97 +10,104 @@ public class RegisterAction extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
 
-	private String nom_abonne;
+	private String Nom_Abonne;
 
-	private String prenom_abonne;
+	private String Prenom_Abonne;
 
-	private String date_naissance;
+	private String Date_Naissance;
 
-	private String password;
+	private String Password;
 
-	private String role_abonne;
-	private String mail_abonne;
-	private String date_adhesion;
-	private String niveau_abonne;
-	private String result;
+	private String Role_Abonne;
+	private String Mail_Abonne;
+	private String Date_Adhesion;
+	private String Niveau_Abonne;
+	private String Result;
 
-	public void setnom_abonne(String nom_abonne) {
-		this.nom_abonne = nom_abonne;
+	public void setNom_Abonne(String Nom_Abonne) {
+		this.Nom_Abonne = Nom_Abonne;
 	}
 
-	public void setprenom_abonne(String prenom_abonne) {
-		this.prenom_abonne = prenom_abonne;
+	public void setPrenom_Abonne(String Prenom_Abonne) {
+		this.Prenom_Abonne = Prenom_Abonne;
 	}
 
-	public void setdate_naissance(String date_naissance) {
-		this.date_naissance = date_naissance;
+	public void setDate_Naissance(String Date_Naissance) {
+		this.Date_Naissance = Date_Naissance;
 	}
 
-	public void setrole_abonne(String role_abonne) {
-		this.role_abonne = role_abonne;
+	public void setRole_Abonne(String Role_Abonne) {
+		this.Role_Abonne = Role_Abonne;
 	}
 
-	public void setpassword(String password) {
-		this.password = password;
-	}
-	
-	public void setresult(String result) {
-		this.result = result;
-	}
-
-	public void setmail_abonne(String mail_abonne) {
-		this.mail_abonne = mail_abonne;
-	}
-
-	public void setdate_adhesion(String date_adhesion) {
-		this.date_adhesion = date_adhesion;
-	}
-
-	public String getnom_abonne() {
-		return nom_abonne;
-	}
-
-	public String getprenom_abonne() {
-		return prenom_abonne;
-	}
-
-	public String getdate_naissance() {
-		return date_naissance;
+	public void setPassword(String Password) {
+		this.Password = Password;
 	}
 	
-	public String getresult() {
-		return result;
+	public void setResult(String Result) {
+		this.Result = Result;
 	}
 
-	public String getrole_abonne() {
-		return role_abonne;
+	public void setMail_Abonne(String Mail_Abonne) {
+		this.Mail_Abonne = Mail_Abonne;
 	}
 
-	public String getpassword() {
-		return password;
+	public void setdate_adhesion(String Date_Adhesion) {
+		this.Date_Adhesion = Date_Adhesion;
 	}
 
-	public String getmail_abonne(() { return mail_abonne(; }
+	public String getNom_Abonne() {
+		return Nom_Abonne;
+	}
 
-	public String getdate_adhesion() {
-		return date_adhesion;
+	public String getPrenom_Abonne() {
+		return Prenom_Abonne;
+	}
+
+	public String getDate_naissance() {
+		return Date_Naissance;
+	}
+	
+	public String getResult() {
+		return Result;
+	}
+
+	public String getRole_Abonne() {
+		return Role_Abonne;
+	}
+
+	public String getPassword() {
+		return Password;
+	}
+
+	public String getMail_Abonne()
+	{
+		return Mail_Abonne;	
+	}
+
+
+	public String getDate_Adhesion() {
+		return Date_Adhesion;
 	}
 
 	@Override
-	public String execute() throws Exception {
+	public String DoRegister() throws Exception {
 		
-		if (!nom_abonne.isEmpty()) && (!prenom_abonne.isEmpty()) && (!password.isEmpty())
+		if (!Nom_Abonne.isEmpty()) && (!PreNom_Abonne.isEmpty()) && (!password.isEmpty())
+		&& 
 		{
 			abonne = new Abonne();
-			abonne.set(getnom_abonne);
-			abonne.set(getprenom_abonne);
-			abonne.set(getdate_naissance);
-			abonne.set(getrole_abonne);
-			abonne.set(getpassword);
-			abonne.set(getmail_abonne);
-			abonne.set(getdate_adhesion);
+			abonne.set(getNom_Abonne);
+			abonne.set(getPrenom_Abonne);
+			abonne.set(getDate_Naissance);
+			abonne.set(getRole_Abonne);
+			abonne.set(getPassword);
+			abonne.set(getMail_Abonne);
+			abonne.set(getDate_Adhesion);
+			
+			abonneService.persist(abonne);
 	
-			result = ActionSupport SUCCESS;
+			result = ActionSupport.SUCCESS;
 			else
 			{
 				this.addActionError("Les champs principaux doivent être remplies");
