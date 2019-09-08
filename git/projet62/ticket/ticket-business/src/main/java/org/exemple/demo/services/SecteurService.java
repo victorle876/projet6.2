@@ -30,6 +30,7 @@ public class SecteurService {
 		SecteurDao.openCurrentSessionwithTransaction();
 		SecteurDao.update(Secteur);
 		SecteurDao.closeCurrentSessionwithTransaction();
+		//
 	}
 
 	public Secteur findById(String id) {

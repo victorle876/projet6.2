@@ -35,31 +35,31 @@ public class Commentaire implements Serializable{
     }
 
     public void setAuteur(String auteur) {
-        Auteur = auteur;
+        this.Auteur = auteur;
     }
 
 
-    private String zone_commentaire ;
+    private String Zone_Commentaire ;
     private String Etat ;
 
-    private String date_maj ;
+    private String Date_Maj ;
 
 
-    public String getZone_commentaire() {
-        return zone_commentaire;
+    public String getZone_Commentaire() {
+        return Zone_Commentaire;
     }
 
-    public void setZone_commentaire(String zone_commentaire) {
-        this.zone_commentaire = zone_commentaire;
+    public void setZone_Commentaire(String Zone_Commentaire) {
+        this.Zone_Commentaire = Zone_Commentaire;
     }
 
 
-    public String getDate_maj() {
-        return date_maj;
+    public String getDate_Maj() {
+        return Date_Maj;
     }
 
-    public void setDate_maj(String date_maj) {
-        this.date_maj = date_maj;
+    public void setDate_Maj(String Date_Maj) {
+        this.Date_Maj = Date_Maj;
     }
 
     public String getEtat() {
@@ -67,6 +67,6 @@ public class Commentaire implements Serializable{
     }
 
     public void setEtat(String etat) {
-        Etat = etat;
+        this.Etat = etat;
     }
 }

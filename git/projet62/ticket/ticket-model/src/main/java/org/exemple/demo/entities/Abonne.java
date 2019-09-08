@@ -15,18 +15,18 @@ import javax.persistence.Table;
 @Table(name = "ABONNE")
 public class Abonne implements Serializable {
 	
-    private String nom_abonne ;
+    private String Nom_Abonne ;
 	
-    private String prenom_abonne ;
+    private String Prenom_Abonne ;
 	
-    private String date_naissance ;
+    private String Date_Naissance ;
 	
-    private String password ;
+    private String Password ;
 
-    private String role_abonne ;
-    private String mail_abonne ;
-    private String date_adhesion ;
-    private String niveau_abonne ;
+    private String Role_Abonne ;
+    private String Mail_Abonne ;
+    private String Date_Adhsésion ;
+    private String Niveau_Abonne ;
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
@@ -41,72 +41,72 @@ public class Abonne implements Serializable {
     }
 
     @Column(length=45)
-    public String getNom_abonne() {
-        return nom_abonne;
+    public String getNom_Abonne() {
+        return Nom_Abonne;
     }
 
-    public void setNom_abonne(String nom_abonne) {
-        this.nom_abonne = nom_abonne;
+    public void setNom_Abonne(String Nom_Abonne) {
+        this.Nom_Abonne = Nom_Abonne;
     }
 
     @Column(length=45)
 
-    public String getPrenom_abonne() {
-        return prenom_abonne;
+    public String getPrenom_Abonne() {
+        return Prenom_Abonne;
     }
 
-    public void setPrenom_abonne(String prenom_abonne) {
-        this.prenom_abonne = prenom_abonne;
+    public void setPrenom_Abonne(String Prenom_Abonne) {
+        this.Prenom_Abonne = Prenom_Abonne;
     }
 
 
 
     public String getPassword() {
-        return password;
+        return Password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassword(String Password) {
+        this.Password = Password;
     }
 
-    public String getDate_naissance() {
-        return date_naissance;
+    public String getDate_Naissance() {
+        return Date_Naissance;
     }
 
-    public void setDate_naissance(String date_naissance) {
-        this.date_naissance = date_naissance;
+    public void setDate_Naissance(String Date_Naissance) {
+        this.Date_Naissance = Date_Naissance;
     }
 
-    public String getRole_abonne() {
-        return role_abonne;
+    public String getRole_Abonne() {
+        return Role_Abonne;
     }
 
-    public void setRole_abonne(String role_abonne) {
-        this.role_abonne = role_abonne;
+    public void setRole_Abonne(String Role_Abonne) {
+        this.Role_Abonne = Role_Abonne;
     }
 
-    public String getMail_abonne() {
-        return mail_abonne;
+    public String getMail_Abonne() {
+        return Mail_Abonne;
     }
 
-    public void setMail_abonne(String mail_abonne) {
-        this.mail_abonne = mail_abonne;
+    public void setMail_Abonne(String Mail_Abonne) {
+        this.Mail_Abonne = Mail_Abonne;
     }
 
-    public String getDate_adhesion() {
-        return date_adhesion;
+    public String getDate_Adhsésion() {
+        return Date_Adhsésion;
     }
 
-    public void setDate_adhesion(String date_adhesion) {
-        this.date_adhesion = date_adhesion;
+    public void setDate_Adhsésion(String Date_Adhsésion) {
+        this.Date_Adhsésion = Date_Adhsésion;
     }
 
-    public String getNiveau_abonne() {
-        return niveau_abonne;
+    public String getNiveau_Abonne() {
+        return Niveau_Abonne;
     }
 
-    public void setNiveau_abonne(String niveau_abonne) {
-        this.niveau_abonne = niveau_abonne;
+    public void setNiveau_Abonne(String Niveau_Abonne) {
+        this.Niveau_Abonne = Niveau_Abonne;
     }
 }
 

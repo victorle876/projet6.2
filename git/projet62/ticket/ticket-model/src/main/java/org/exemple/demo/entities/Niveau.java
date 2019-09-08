@@ -27,13 +27,13 @@ public class Niveau implements Serializable{
         this.id = id;
     }
 
-    private String libelle_niveau ;
+    private String Libelle_Niveau ;
 
-    public String getLibelle_niveau() {
-        return libelle_niveau;
+    public String getLibelle_Niveau() {
+        return Libelle_Niveau;
     }
 
-    public void setLibelle_niveau(String libelle_niveau) {
-        this.libelle_niveau = libelle_niveau;
+    public void setLibelle_Niveau(String Libelle_Niveau) {
+        this.Libelle_Niveau = Libelle_Niveau;
     }
 }

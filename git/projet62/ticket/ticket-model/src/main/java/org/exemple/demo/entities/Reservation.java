@@ -24,19 +24,19 @@ public class Reservation implements Serializable {
         this.id = id;
     }
 
-    private String num_topologie ;
+    private String Num_Topologie ;
 
 
     private String Auteur ;
 
-    private String date_ajout ;
+    private String Date_Ajout ;
 
-    public String getNum_topologie() {
-        return num_topologie;
+    public String getNum_Topologie() {
+        return Num_Topologie;
     }
 
-    public void setNum_topologie(String num_cotation) {
-        this.num_topologie = num_topologie;
+    public void setNum_Topologie(String num_cotation) {
+        this.Num_Topologie = Num_Topologie;
     }
 
     public String getAuteur() {
@@ -47,12 +47,12 @@ public class Reservation implements Serializable {
         Auteur = auteur;
     }
 
-    public String getDate_ajout() {
-        return date_ajout;
+    public String getDate_Ajout() {
+        return Date_Ajout;
     }
 
-    public void setDate_ajout(String date_ajout) {
-        this.date_ajout = date_ajout;
+    public void setDate_Ajout(String Date_Ajout) {
+        this.Date_Ajout = Date_Ajout;
     }
 
 

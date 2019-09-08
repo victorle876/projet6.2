@@ -24,8 +24,8 @@ public class Site implements Serializable{
         this.id = id;
     }
 
-    private String libelle_site ;
-    private String date_ajout ;
+    private String Libelle_Site ;
+    private String Date_aAout ;
     private int nombre_secteur ;
     private int nombre_cotation ;
 
@@ -34,20 +34,20 @@ public class Site implements Serializable{
     private int hauteur_maxi ;
 
 
-    public String getLibelle_site() {
-        return libelle_site;
+    public String getLibelle_Site() {
+        return Libelle_Site;
     }
 
-    public void setLibelle_site(String libelle_site) {
-        this.libelle_site = libelle_site;
+    public void setLibelle_Site(String Libelle_Site) {
+        this.Libelle_Site = Libelle_Site;
     }
 
-    public String getDate_ajout() {
-        return date_ajout;
+    public String getDate_aAout() {
+        return Date_aAout;
     }
 
-    public void setDate_ajout(String date_ajout) {
-        this.date_ajout = date_ajout;
+    public void setDate_aAout(String Date_aAout) {
+        this.Date_aAout = Date_aAout;
     }
 
     public int getNombre_secteur() {

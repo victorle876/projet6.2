@@ -24,23 +24,23 @@ public class Secteur implements Serializable {
         this.id = id;
     }
 
-    private String libelle_secteur ;
+    private String Libelle_Secteur ;
 
-    private int longueur_secteur ;
+    private int Longueur_Secteur ;
 
-    public String getLibelle_secteur() {
-        return libelle_secteur;
+    public String getLibelle_Secteur() {
+        return Libelle_Secteur;
     }
 
-    public void setLibelle_secteur(String libelle_secteur) {
-        this.libelle_secteur = libelle_secteur;
+    public void setLibelle_Secteur(String Libelle_Secteur) {
+        this.Libelle_Secteur = Libelle_Secteur;
     }
 
-    public int getLongueur_secteur() {
-        return longueur_secteur;
+    public int getLongueur_Secteur() {
+        return Longueur_Secteur;
     }
 
-    public void setLongueur_secteur(int longueur_secteur) {
-        this.longueur_secteur = longueur_secteur;
+    public void setLongueur_Secteur(int Longueur_Secteur) {
+        this.Longueur_Secteur = Longueur_Secteur;
     }
 }

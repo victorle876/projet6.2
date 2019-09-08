@@ -19,14 +19,14 @@ public class Cotation implements Serializable {
     @GeneratedValue(strategy = GenerationType.TABLE)
     private int id;
 
-    private String Libelle_cotation ;
+    private String Libelle_Cotation ;
 
-    public String getLibelle_cotation() {
-        return Libelle_cotation;
+    public String getLibelle_Cotation() {
+        return Libelle_Cotation;
     }
 
     public void setCotation(String cotation) {
-        this.Libelle_cotation = Libelle_cotation;
+        this.Libelle_Cotation = Libelle_Cotation;
     }
 
 
