@@ -2,7 +2,7 @@ package org.exemple.demo.services;
 import java.util.List;
 import javax.persistence.*;
 
-import org.exemple.demo.consumer.dao.AbonneDao;
+import org.exemple.demo.consumer.dao.*;
 import org.exemple.demo.entities.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -12,11 +12,10 @@ import org.hibernate.cfg.Configuration;
 import org.exemple.demo.hibernate.*;
 
 
-import org.exemple.demo.consumer.dao.ReservationDao;
-import org.exemple.demo.entities.Reservation;
-
 public class ReservationService {
 	private static ReservationDao ReservationDao;
+	private static Reservation reservation;
+	private static Topologie topologie;
 	
 	public ReservationService() {
 		ReservationDao = new ReservationDao();
@@ -51,6 +50,13 @@ public class ReservationService {
 	public List<Reservation> findAll() {
 		ReservationDao.openCurrentSession();
 		List<Reservation> Reservations = ReservationDao.findAll();
+		ReservationDao.closeCurrentSession();
+		return Reservations;
+	}
+	
+	public List<Reservation> findByTopologie_Reservation() {
+		ReservationDao.openCurrentSession();
+		Reservation Reservations = ReservationDao.findByTopologie_Reservation(reservation, topologie);
 		ReservationDao.closeCurrentSession();
 		return Reservations;
 	}

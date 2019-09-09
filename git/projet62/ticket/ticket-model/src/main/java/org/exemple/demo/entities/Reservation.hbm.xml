@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 1 sept. 2019 ?? 22:23:21 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="org.exemple.demo.entities.Reservation" table="RESERVATION">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="num_topologie" type="java.lang.String">
+            <column name="NUM_TOPOLOGIE" />
+        </property>
+        <property name="Auteur" type="java.lang.String">
+            <column name="AUTEUR" />
+        </property>
+        <property name="date_ajout" type="java.lang.String">
+            <column name="DATE_AJOUT" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 1 sept. 2019 ?? 22:23:21 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="org.exemple.demo.entities.Commentaire" table="COMMENTAIRE">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="Auteur" type="java.lang.String">
+            <column name="AUTEUR" />
+        </property>
+        <property name="zone_commentaire" type="java.lang.String">
+            <column name="ZONE_COMMENTAIRE" />
+        </property>
+        <property name="Etat" type="java.lang.String">
+            <column name="ETAT" />
+        </property>
+        <property name="date_maj" type="java.lang.String">
+            <column name="DATE_MAJ" />
+        </property>
+    </class>
+</hibernate-mapping>

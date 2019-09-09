@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 1 sept. 2019 ?? 22:23:21 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="org.exemple.demo.entities.Abonne" table="ABONNE">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="nom_abonne" type="java.lang.String">
+            <column name="NOM_ABONNE" />
+        </property>
+        <property name="prenom_abonne" type="java.lang.String">
+            <column name="PRENOM_ABONNE" />
+        </property>
+        <property name="date_naissance" type="java.lang.String">
+            <column name="DATE_NAISSANCE" />
+        </property>
+        <property name="password" type="java.lang.String">
+            <column name="PASSWORD" />
+        </property>
+        <property name="role_abonne" type="java.lang.String">
+            <column name="ROLE_ABONNE" />
+        </property>
+        <property name="mail_abonne" type="java.lang.String">
+            <column name="MAIL_ABONNE" />
+        </property>
+        <property name="date_adhesion" type="java.lang.String">
+            <column name="DATE_ADHESION" />
+        </property>
+        <property name="niveau_abonne" type="java.lang.String">
+            <column name="NIVEAU_ABONNE" />
+        </property>
+    </class>
+</hibernate-mapping>

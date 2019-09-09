@@ -1,20 +1,43 @@
 package org.exemple.demo.entities;
 import java.io.Serializable;
+import java.sql.Timestamp;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.NamedQueries;
+import org.hibernate.annotations.NamedQuery;
 
 @Entity
 @Table(name = "RESERVATION")
+@NamedQueries({
+    @NamedQuery(name = Reservation.Find_By_Reservation_Topologie, query = "SELECT Reservation_Id, abonne , topologie FROM Reservation r WHERE r.topologie = :topologie "),
+    
+})
 public class Reservation implements Serializable {
+	
+	public static final String Find_By_Reservation_Topologie = "Reservation.FindByReservationAndTopologie";
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
+    
+    @Column(name= "Reservation_Id")
     private int id;
+    
+    @OneToOne
+    @JoinColumn(name = "Topologie_id")
+    private Topologie topologie;
+    
+    @OneToOne
+    @JoinColumn(name = "Abonne_id")
+    private Abonne abonne;
 
     public int getId() {
         return id;
@@ -24,20 +47,9 @@ public class Reservation implements Serializable {
         this.id = id;
     }
 
-    private String Num_Topologie ;
-
-
     private String Auteur ;
 
-    private String Date_Ajout ;
-
-    public String getNum_Topologie() {
-        return Num_Topologie;
-    }
-
-    public void setNum_Topologie(String num_cotation) {
-        this.Num_Topologie = Num_Topologie;
-    }
+    private Timestamp Date_Ajout ;
 
     public String getAuteur() {
         return Auteur;
@@ -47,11 +59,11 @@ public class Reservation implements Serializable {
         Auteur = auteur;
     }
 
-    public String getDate_Ajout() {
+    public Timestamp getDate_Ajout() {
         return Date_Ajout;
     }
 
-    public void setDate_Ajout(String Date_Ajout) {
+    public void setDate_Ajout(Timestamp Date_Ajout) {
         this.Date_Ajout = Date_Ajout;
     }
 

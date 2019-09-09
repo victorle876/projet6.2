@@ -3,7 +3,6 @@ import java.util.List;
 import javax.persistence.*;
 
 import org.exemple.demo.consumer.dao.CommentaireDao;
-import org.exemple.demo.dao.*;
 import org.exemple.demo.entities.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -14,6 +13,9 @@ import org.exemple.demo.hibernate.*;
 
 public class CommentaireService {
 	private static CommentaireDao CommentaireDao;
+	
+	private Site site;
+	private Abonne abonne;
 	
 public CommentaireService() {
 	
@@ -48,6 +50,13 @@ public CommentaireService() {
 	public List<Commentaire> findAll() {
 		CommentaireDao.openCurrentSession();
 		List<Commentaire> Commentaires = CommentaireDao.findAll();
+		CommentaireDao.closeCurrentSession();
+		return Commentaires;
+	}
+	
+	public List<Commentaire> Find_By_Site_Abonne() {
+		CommentaireDao.openCurrentSession();
+		Commentaire Commentaires = CommentaireDao.Find_By_Site_Abonne(site, abonne);
 		CommentaireDao.closeCurrentSession();
 		return Commentaires;
 	}

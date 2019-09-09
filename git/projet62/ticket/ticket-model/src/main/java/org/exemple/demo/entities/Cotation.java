@@ -29,8 +29,6 @@ public class Cotation implements Serializable {
         this.Libelle_Cotation = Libelle_Cotation;
     }
 
-
-
     public int getId() {
         return id;
     }
@@ -39,13 +37,13 @@ public class Cotation implements Serializable {
         this.id = id;
     }
 
-    private String num_difficulte;
+    private String Num_Difficulte;
 
     public String getNum_difficulte() {
-        return num_difficulte;
+        return Num_Difficulte;
     }
 
-    public void setNum_difficulte(String num_difficulte) {
-        this.num_difficulte = num_difficulte;
+    public void setNum_Difficulte(String num_difficulte) {
+        this.Num_Difficulte = num_difficulte;
     }
 }

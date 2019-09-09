@@ -1,11 +1,14 @@
 package org.exemple.demo.entities;
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -14,15 +17,22 @@ public class Secteur implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
-    private int id;
+    
+    @Column(name= "Secteur_Id")
+    private int Secteur_Id;
+    
+    @OneToOne
+    @JoinColumn(name = "Cotation_id")
+    private Cotation cotation;
 
-    public int getId() {
-        return id;
+    public int getSecteur_Id() {
+        return Secteur_Id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setSecteur_Id(int id) {
+        this.Secteur_Id = id;
     }
+    
 
     private String Libelle_Secteur ;
 
