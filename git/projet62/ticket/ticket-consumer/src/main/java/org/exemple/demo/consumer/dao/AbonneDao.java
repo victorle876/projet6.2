@@ -1,4 +1,5 @@
 package org.exemple.demo.consumer.dao;
+//créer un sous package impl :classes  xwxxDAo
 //import org.exemple.demo.hibernate.util.*;
 import javax.persistence.*;
 import org.exemple.demo.consumer.daoInterface.AbonneDaoInterface;

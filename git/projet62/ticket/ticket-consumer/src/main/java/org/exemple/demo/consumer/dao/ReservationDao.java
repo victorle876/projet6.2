@@ -1,7 +1,7 @@
 package org.exemple.demo.consumer.dao;
 
 import java.util.List;
-import org.exemple.demo.entities.Reservation;
+import org.exemple.demo.entities.*;
 import org.exemple.demo.consumer.daoInterface.ReservationDaoInterface;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -71,6 +71,12 @@ public class ReservationDao implements ReservationDaoInterface<Reservation, Stri
     @SuppressWarnings("unchecked")
     public List<Reservation> findAll() {
         List<Reservation> Reservations = (List<Reservation>)  getCurrentSession().createQuery("from Reservation").list();
+        return Reservations;
+    }
+    
+    @SuppressWarnings("unchecked")
+    public Reservation findByTopologie_Reservation(Reservation reservation, Topologie topologie) {
+        List<Reservation> Reservations = (List<Reservation>)  getCurrentSession().createQuery(Reservation.Find_By_Reservation_Topologie).list();
         return Reservations;
     }
  

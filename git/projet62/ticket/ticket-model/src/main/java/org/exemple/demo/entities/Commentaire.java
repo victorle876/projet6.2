@@ -28,9 +28,6 @@ import org.hibernate.annotations.NamedQuery;
 public class Commentaire implements Serializable{
 	
 	public static final String Find_By_Site_User = "Commentaire.findBySiteAndAbonne";
-
- //   @Id
-//    @GeneratedValue(strategy = GenerationType.TABLE)
     
     @Column(name= "commentaire_id")
     private int id;
@@ -45,15 +42,20 @@ public class Commentaire implements Serializable{
 
     private String Auteur ;
     
+    private Timestamp DateMaj ;
+    
     @OneToOne
     @JoinColumn(name = "Site_Id")
     private Site site;
+    
+    private String ZoneCommentaire ;
+    private String Etat ;
     
     @OneToOne
     @JoinColumn(name = "Abonne_Id")
     private Abonne abonne;
     
-
+    @Column(name= "Auteur")
     public String getAuteur() {
         return Auteur;
     }
@@ -62,30 +64,25 @@ public class Commentaire implements Serializable{
         this.Auteur = auteur;
     }
 
-
-    private String Zone_Commentaire ;
-    private String Etat ;
-
-    private Timestamp Date_Maj ;
-
-
-    public String getZone_Commentaire() {
-        return Zone_Commentaire;
+    @Column(name= "ZoneCommentaire")
+    public String getZoneCommentaire() {
+        return ZoneCommentaire;
     }
 
-    public void setZone_Commentaire(String Zone_Commentaire) {
-        this.Zone_Commentaire = Zone_Commentaire;
+    public void setZoneCommentaire(String ZoneCommentaire) {
+        this.ZoneCommentaire = ZoneCommentaire;
     }
 
-
-    public Timestamp getDate_Maj() {
-        return Date_Maj;
+    @Column(name= "DateMaj")
+    public Timestamp getDateMaj() {
+        return DateMaj;
     }
 
-    public void setDate_Maj(Timestamp Date_Maj) {
-        this.Date_Maj = Date_Maj;
+    public void setDateMaj(Timestamp DateMaj) {
+        this.DateMaj = DateMaj;
     }
 
+    @Column(name= "Etat")
     public String getEtat() {
         return Etat;
     }

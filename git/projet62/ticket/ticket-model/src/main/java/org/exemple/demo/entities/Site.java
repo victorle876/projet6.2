@@ -1,15 +1,7 @@
 package org.exemple.demo.entities;
 import java.io.Serializable;
 import java.sql.Timestamp;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import org.hibernate.annotations.NamedQueries;
 import org.hibernate.annotations.NamedQuery;
@@ -22,6 +14,15 @@ import org.hibernate.annotations.NamedQuery;
 public class Site implements Serializable{
 	
 	public static final String Find_By_Secteur_Site = "Site.FindBySecteur";
+	
+    private String LibelleSite ;
+    private Timestamp DateAjout ;
+    private int NombreSecteur ;
+    private int NombreCotation ;
+
+    private int Longueur ;
+    private int HauteurMini ;
+    private int HauteurMaxi ;
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
@@ -36,51 +37,45 @@ public class Site implements Serializable{
         this.Site_Id = id;
     }
     
-    @OneToMany(mappedBy = "site", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "site")
     private Secteur secteur;
 
-    private String Libelle_Site ;
-    private Timestamp Date_Ajout ;
-    private int Nombre_Secteur ;
-    private int Nombre_Cotation ;
+	public String getLibelleSite() {
+        return LibelleSite;
+    }
 
-    private int Longueur ;
-    private int Hauteur_Mini ;
-    private int Hauteur_Maxi ;
+    public void setLibelleSite(String LibelleSite) {
+        this.LibelleSite = LibelleSite;
+    }
+
+    @Column(name= "DateAjout")
+    public Timestamp getDateAjout() {
+        return DateAjout;
+    }
+
+    public void setDateAjout(Timestamp DateAjout) {
+        this.DateAjout = DateAjout;
+    }
     
-
-	public String getLibelle_Site() {
-        return Libelle_Site;
+    @Column(name= "NombreSecteur")
+    public int getNombreSecteur() {
+        return NombreSecteur;
     }
 
-    public void setLibelle_Site(String Libelle_Site) {
-        this.Libelle_Site = Libelle_Site;
+    public void setgetNombreSecteur(int NombreSecteur) {
+        this.NombreSecteur = NombreSecteur;
+    }
+    
+    @Column(name= "NombreCotation")
+    public int getNombreCotation() {
+        return NombreCotation;
     }
 
-    public Timestamp getDate_Ajout() {
-        return Date_Ajout;
+    public void setNombreCotation(int NombreCotation) {
+        this.NombreCotation = NombreCotation;
     }
-
-    public void setDate_Ajout(Timestamp Date_Ajout) {
-        this.Date_Ajout = Date_Ajout;
-    }
-
-    public int getNombre_Secteur() {
-        return Nombre_Secteur;
-    }
-
-    public void setgetNombre_Secteur(int Nombre_Secteur) {
-        this.Nombre_Secteur = Nombre_Secteur;
-    }
-
-    public int getNombre_Cotation() {
-        return Nombre_Cotation;
-    }
-
-    public void setNombre_Cotation(int Nombre_Cotation) {
-        this.Nombre_Cotation = Nombre_Cotation;
-    }
-
+    
+    @Column(name= "Longueur")
     public int getLongueur() {
         return Longueur;
     }
@@ -88,20 +83,22 @@ public class Site implements Serializable{
     public void setLongueur(int longueur) {
         this.Longueur = longueur;
     }
-
-    public int getHauteur_Mini() {
-        return Hauteur_Mini;
+    
+    @Column(name= "HauteurMini")
+    public int getHauteurMini() {
+        return HauteurMini;
     }
 
-    public void setHauteur_mini(int Hauteur_Mini) {
-        this.Hauteur_Mini = Hauteur_Mini;
+    public void setHauteurMini(int HauteurMini) {
+        this.HauteurMini = HauteurMini;
+    }
+    
+    @Column(name= "HauteurMaxi")
+    public int getHauteurMaxi() {
+        return HauteurMaxi;
     }
 
-    public int getHauteur_Maxi() {
-        return Hauteur_Maxi;
-    }
-
-    public void setHauteur_maxi(int Hauteur_Maxi) {
-        this.Hauteur_Maxi = Hauteur_Maxi;
+    public void setHauteurMaxi(int HauteurMaxi) {
+        this.HauteurMaxi = HauteurMaxi;
     }
 }

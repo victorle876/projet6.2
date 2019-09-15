@@ -3,13 +3,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
+import javax.persistence.*;
 
 @Entity
 @Table(name = "COTATION")
@@ -19,16 +13,11 @@ public class Cotation implements Serializable {
     @GeneratedValue(strategy = GenerationType.TABLE)
     private int id;
 
-    private String Libelle_Cotation ;
+    private String LibelleCotation ;
+    
+    private String NumDifficulte;
 
-    public String getLibelle_Cotation() {
-        return Libelle_Cotation;
-    }
-
-    public void setCotation(String cotation) {
-        this.Libelle_Cotation = Libelle_Cotation;
-    }
-
+    @Column(name = "cotation_id")
     public int getId() {
         return id;
     }
@@ -36,14 +25,20 @@ public class Cotation implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
-
-    private String Num_Difficulte;
-
-    public String getNum_difficulte() {
-        return Num_Difficulte;
+    public String getLibelleCotation() {
+        return LibelleCotation;
     }
 
-    public void setNum_Difficulte(String num_difficulte) {
-        this.Num_Difficulte = num_difficulte;
+    public void setCotation(String LibelleCotation) {
+        this.LibelleCotation = LibelleCotation;
+    }
+
+    @JoinColumn(name = "NumDifficulte")
+    public String getNumDifficulte() {
+        return NumDifficulte;
+    }
+
+    public void setNumDifficulte(String NumDifficulte) {
+        this.NumDifficulte = NumDifficulte;
     }
 }

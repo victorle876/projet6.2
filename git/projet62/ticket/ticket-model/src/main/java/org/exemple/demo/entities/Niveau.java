@@ -3,13 +3,7 @@ package org.exemple.demo.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "NIVEAU")
@@ -18,7 +12,10 @@ public class Niveau implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private int id;
+    
+    private String LibelleNiveau ;
 
+    @Column(name= "niveau_id")
     public int getId() {
         return id;
     }
@@ -27,13 +24,12 @@ public class Niveau implements Serializable{
         this.id = id;
     }
 
-    private String Libelle_Niveau ;
-
-    public String getLibelle_Niveau() {
-        return Libelle_Niveau;
+    @Column(name= "LibelleNiveau")
+    public String getLibelleNiveau() {
+        return LibelleNiveau;
     }
 
-    public void setLibelle_Niveau(String Libelle_Niveau) {
-        this.Libelle_Niveau = Libelle_Niveau;
+    public void setLibelleNiveau(String LibelleNiveau) {
+        this.LibelleNiveau = LibelleNiveau;
     }
 }

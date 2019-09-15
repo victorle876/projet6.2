@@ -2,15 +2,7 @@ package org.exemple.demo.entities;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import org.hibernate.annotations.NamedQueries;
 import org.hibernate.annotations.NamedQuery;
@@ -34,39 +26,37 @@ public class Topologie implements Serializable{
 
     public void setId(int id) {
         this.id = id;
-    }
-    
-    @OneToOne
-    @JoinColumn(name = "Site_id")
+    }  
+    @OneToMany(mappedBy = "Site_Id")
     private Site site;
 
-    private String Libelle_Topologie ;
+    private String LibelleTopologie ;
 
-    private Timestamp Date_Maj ;
+    private Timestamp DateMaj ;
     
-    private Timestamp Date_Parution ;
-    public String getLibelle_topologie() {
-        return Libelle_Topologie;
+    private Timestamp DateParution ;
+    public String getLibelleTopologie() {
+        return LibelleTopologie;
     }
 
-    public void setLibelle_Topologie(String libelle_topologie) {
-        this.Libelle_Topologie = libelle_topologie;
+    public void setLibelleTopologie(String LibelleTopologie) {
+        this.LibelleTopologie = LibelleTopologie;
     }
 
-    public Timestamp getDate_Maj() {
-        return Date_Maj;
+    public Timestamp getDateMaj() {
+        return DateMaj;
     }
 
-    public void setDate_Maj(Timestamp date_maj) {
-        this.Date_Maj = date_maj;
+    public void setDateMaj(Timestamp DateMaj) {
+        this.DateMaj = DateMaj;
     }
     
-    public Timestamp getDate_Parution() {
-        return Date_Parution;
+    public Timestamp getDateParution() {
+        return DateParution;
     }
 
-    public void setDate_Parution(Timestamp date_parution) {
-        this.Date_Parution = date_parution;
+    public void setDateParution(Timestamp DateParution) {
+        this.DateParution = DateParution;
     }
 
 

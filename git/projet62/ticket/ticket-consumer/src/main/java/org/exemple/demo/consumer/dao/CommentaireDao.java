@@ -1,12 +1,11 @@
 package org.exemple.demo.consumer.dao;
 
-import org.exemple.demo.consumer.daoInterface.CommentaireDaoInterface;
+import org.exemple.demo.entities.*;
 
+import org.exemple.demo.consumer.daoInterface.CommentaireDaoInterface;
 import java.util.List;
 
-import org.exemple.demo.entities.Commentaire;
 import org.hibernate.SessionFactory;
-import org.exemple.demo.entities.Commentaire;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -70,6 +69,8 @@ public class CommentaireDao implements org.exemple.demo.consumer.daoInterface.Co
 		Commentaire Commentaire = (Commentaire) getCurrentSession().get(Commentaire.class, id);
 		return Commentaire;
 	}
+	
+
 
 	public void delete(Commentaire commentaire) {
 		getCurrentSession().delete(commentaire);
@@ -80,6 +81,12 @@ public class CommentaireDao implements org.exemple.demo.consumer.daoInterface.Co
 		List<Commentaire> Commentaires = (List<Commentaire>) getCurrentSession()
 				.createQuery("from Commentaire").list();
 		return Commentaires;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public Commentaire Find_By_Site_Abonne(Site site, Abonne abonne) {
+		Commentaire Commentaire = (Commentaire) getCurrentSession().createQuery("Commentaire.Find_By_Site_User").list();;
+		return Commentaire;
 	}
 
 	public void deleteAll() {

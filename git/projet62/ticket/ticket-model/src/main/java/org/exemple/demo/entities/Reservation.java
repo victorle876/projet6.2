@@ -31,6 +31,10 @@ public class Reservation implements Serializable {
     @Column(name= "Reservation_Id")
     private int id;
     
+    private String Auteur ;
+
+    private Timestamp DateAjout ;
+    
     @OneToOne
     @JoinColumn(name = "Topologie_id")
     private Topologie topologie;
@@ -47,10 +51,7 @@ public class Reservation implements Serializable {
         this.id = id;
     }
 
-    private String Auteur ;
-
-    private Timestamp Date_Ajout ;
-
+    @Column(name= "Auteur")
     public String getAuteur() {
         return Auteur;
     }
@@ -59,12 +60,13 @@ public class Reservation implements Serializable {
         Auteur = auteur;
     }
 
-    public Timestamp getDate_Ajout() {
-        return Date_Ajout;
+    @Column(name= "DateAjout")
+    public Timestamp getDateAjou() {
+        return DateAjout;
     }
 
-    public void setDate_Ajout(Timestamp Date_Ajout) {
-        this.Date_Ajout = Date_Ajout;
+    public void setDateAjoutjout(Timestamp DateAjout) {
+        this.DateAjout = DateAjout;
     }
 
 

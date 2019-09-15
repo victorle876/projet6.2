@@ -1,15 +1,7 @@
 package org.exemple.demo.entities;
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "SECTEUR")
@@ -18,39 +10,41 @@ public class Secteur implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     
-    @Column(name= "Secteur_Id")
-    private int Secteur_Id;
+    
+    private int SecteurId;
+    
+    private String LibelleSecteur ;
+
+    private int LongueurSecteur ;
     
     @OneToOne
-    @JoinColumn(name = "Cotation_id")
+    @JoinColumn(name = "cotation_id")
     private Cotation cotation;
 
-    public int getSecteur_Id() {
-        return Secteur_Id;
+    @Column(name= "SecteurId")
+    public int getSecteurId() {
+        return SecteurId;
     }
 
-    public void setSecteur_Id(int id) {
-        this.Secteur_Id = id;
+    public void setSecteurId(int id) {
+        this.SecteurId = id;
     }
-    
-
-    private String Libelle_Secteur ;
-
-    private int Longueur_Secteur ;
-
-    public String getLibelle_Secteur() {
-        return Libelle_Secteur;
+ 
+    @Column(name= "LibelleSecteur")
+    public String getLibelleSecteur() {
+        return LibelleSecteur;
     }
 
-    public void setLibelle_Secteur(String Libelle_Secteur) {
-        this.Libelle_Secteur = Libelle_Secteur;
+    public void setLibelleSecteur(String LibelleSecteur) {
+        this.LibelleSecteur = LibelleSecteur;
     }
 
-    public int getLongueur_Secteur() {
-        return Longueur_Secteur;
+    @Column(name= "LongueurSecteur")
+    public int getLongueurSecteur() {
+        return LongueurSecteur;
     }
 
-    public void setLongueur_Secteur(int Longueur_Secteur) {
-        this.Longueur_Secteur = Longueur_Secteur;
+    public void setLongueurSecteur(int LongueurSecteur) {
+        this.LongueurSecteur = LongueurSecteur;
     }
 }

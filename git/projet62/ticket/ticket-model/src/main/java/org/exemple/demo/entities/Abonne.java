@@ -4,43 +4,38 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "ABONNE")
 public class Abonne implements Serializable {
+	 
 	
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
-	@Column(name= "abonne_id")
 	private int id;
 	
-    private String Nom_Abonne ;
+    private String NomAbonne ;
 	
-    private String Prenom_Abonne ;
+    private String PrenomAbonne ;
 	
-    private String Date_Naissance ;
+    private String DateNaissance ;
 	
     private String Password ;
 
-    private String Role_Abonne ;
-    private String Mail_Abonne ;
-    private Timestamp Date_Adhésion ;
-    private String Niveau_Abonne ;
+    private String RoleAbonne ;
+    private String MailAbonne ;
     
-    @OneToOne
-    @JoinColumn(name = "Reservation_id")
+    private Timestamp DateAdhesion ;
+    private String NiveauAbonne ;
+    
+  //  @ManyToOne(fetch = FetchType.LAZY)
+  //  @JoinColumn(name = "Reservation_id")
+    
+    @OneToMany(mappedBy = "order")
     private Reservation reservation;
 
-
+    @Column(name= "abonne_id")
     public int getId() {
         return id;
     }
@@ -49,27 +44,25 @@ public class Abonne implements Serializable {
         this.id = id;
     }
 
-    @Column(length=45)
-    public String getNom_Abonne() {
-        return Nom_Abonne;
+    @Column(name= "NomAbonne")
+    public String getNomAbonne() {
+        return NomAbonne;
     }
 
-    public void setNom_Abonne(String Nom_Abonne) {
-        this.Nom_Abonne = Nom_Abonne;
+    public void setNomAbonne(String NomAbonne) {
+        this.NomAbonne = NomAbonne;
     }
 
-    @Column(length=45)
-
-    public String getPrenom_Abonne() {
-        return Prenom_Abonne;
+    @Column(name= "PrenomAbonne")
+    public String getPrenomAbonne() {
+        return PrenomAbonne;
     }
 
-    public void setPrenom_Abonne(String Prenom_Abonne) {
-        this.Prenom_Abonne = Prenom_Abonne;
+    public void setPreNomAbonne(String PrenomAbonne) {
+        this.PrenomAbonne = PrenomAbonne;
     }
-
-
-
+    
+    @Column(name= "Password")
     public String getPassword() {
         return Password;
     }
@@ -77,45 +70,50 @@ public class Abonne implements Serializable {
     public void setPassword(String Password) {
         this.Password = Password;
     }
-
-    public String getDate_Naissance() {
-        return Date_Naissance;
+    
+    @Column(name= "DateNaissance")
+    public String getDateNaissance() {
+        return DateNaissance;
     }
 
-    public void setDate_Naissance(String Date_Naissance) {
-        this.Date_Naissance = Date_Naissance;
+    public void setDateNaissance(String DateNaissance) {
+        this.DateNaissance = DateNaissance;
+    }
+    
+    @Column(name= "RoleAbonne")
+    public String getRoleAbonne() {
+        return RoleAbonne;
     }
 
-    public String getRole_Abonne() {
-        return Role_Abonne;
+    public void setRoleAbonne(String RoleAbonne) {
+        this.RoleAbonne = RoleAbonne;
+    }
+    
+    @Column(name= "MailAbonne")
+    public String getMailAbonne() {
+        return MailAbonne;
     }
 
-    public void setRole_Abonne(String Role_Abonne) {
-        this.Role_Abonne = Role_Abonne;
+    public void setMailAbonne(String MailAbonne) {
+        this.MailAbonne = MailAbonne;
+    }
+    
+    @Column(name= "DateAdhesion")
+    public Timestamp getDateAdhesion() {
+        return DateAdhesion;
     }
 
-    public String getMail_Abonne() {
-        return Mail_Abonne;
+    public void setDateAdhesion(Timestamp DateAdhesion) {
+        this.DateAdhesion = DateAdhesion;
+    }
+    
+    @Column(name= "NiveauAbonne")
+    public String getNiveauAbonne() {
+        return NiveauAbonne;
     }
 
-    public void setMail_Abonne(String Mail_Abonne) {
-        this.Mail_Abonne = Mail_Abonne;
-    }
-
-    public Timestamp getDate_Adhésion() {
-        return Date_Adhésion;
-    }
-
-    public void setDate_Adhsésion(Timestamp Date_Adhésion) {
-        this.Date_Adhésion = Date_Adhésion;
-    }
-
-    public String getNiveau_Abonne() {
-        return Niveau_Abonne;
-    }
-
-    public void setNiveau_Abonne(String Niveau_Abonne) {
-        this.Niveau_Abonne = Niveau_Abonne;
+    public void setNiveauAbonne(String NiveauAbonne) {
+        this.NiveauAbonne = NiveauAbonne;
     }
 }
 
