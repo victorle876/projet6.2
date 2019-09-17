@@ -2,7 +2,9 @@ package org.exemple.demo.consumer.dao;
 
 import java.util.List;
 
+import org.exemple.demo.entities.Abonne;
 import org.exemple.demo.entities.Niveau;
+import org.exemple.demo.consumer.daoInterface.AbonneDaoInterface;
 import org.exemple.demo.consumer.daoInterface.NiveauDaoInterface;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,7 +13,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 
-public class NiveauDao implements AbstractDao {
+public abstract class NiveauDao implements NiveauDaoInterface {
 	private AbstractDao AbstractDao;
 	
 	public NiveauDao(){

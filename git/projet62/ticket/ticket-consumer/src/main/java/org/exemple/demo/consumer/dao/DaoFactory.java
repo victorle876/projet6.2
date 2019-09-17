@@ -5,7 +5,7 @@ private final AbonneInterfaceDao AbonneDao = new AbonneDao();
 	
   public AbonneDao getAbonneDao() {
 //	  AbonneDao AbonneDao;
-	return AbonneDao;
+	return new AbonneDao();
   }
   
   public CommentaireDao getCommentaireDao(){

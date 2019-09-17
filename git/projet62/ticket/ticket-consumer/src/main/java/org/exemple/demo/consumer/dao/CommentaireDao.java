@@ -1,7 +1,7 @@
 package org.exemple.demo.consumer.dao;
 
 import org.exemple.demo.entities.* ;
-
+import org.exemple.demo.consumer.daoInterface.AbonneDaoInterface;
 import org.exemple.demo.consumer.daoInterface.CommentaireDaoInterface;
 import java.util.List;
 
@@ -11,7 +11,7 @@ import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
-public class CommentaireDao implements AbstractDao {
+public abstract class CommentaireDao implements CommentaireDaoInterface {
 	private AbstractDao AbstractDao ;
 
 	public CommentaireDao() {

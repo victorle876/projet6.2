@@ -2,7 +2,6 @@ package org.exemple.demo.consumer.dao;
 
 import java.util.List;
 
-import org.exemple.demo.entities.Cotation;
 import org.exemple.demo.entities.*;
 import org.exemple.demo.consumer.daoInterface.CotationDaoInterface;
 import org.hibernate.Session;
@@ -11,7 +10,7 @@ import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
-public class CotationDao implements AbstractDao {
+public abstract class CotationDao implements CotationDaoInterface {
 
 	private AbstractDao AbstractDao;
 	

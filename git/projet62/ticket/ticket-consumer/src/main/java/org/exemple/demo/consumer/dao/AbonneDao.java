@@ -12,7 +12,7 @@ import org.hibernate.cfg.Configuration;
 
 import java.util.List;
 
-public class AbonneDao implements AbstractDao {
+public abstract class AbonneDao implements AbonneDaoInterface {
 	private AbstractDao AbstractDao ;
 	
 	public AbonneDao(){

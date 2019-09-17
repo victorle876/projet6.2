@@ -2,13 +2,14 @@ package org.exemple.demo.consumer.dao;
 
 import java.util.List;
 import org.exemple.demo.entities.*;
+import org.exemple.demo.consumer.daoInterface.AbonneDaoInterface;
 import org.exemple.demo.consumer.daoInterface.ReservationDaoInterface;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-public class ReservationDao implements AbstractDao {
+public abstract class ReservationDao implements ReservationDaoInterface {
 	private AbstractDao AbstractDao;
 	public ReservationDao(){
 		

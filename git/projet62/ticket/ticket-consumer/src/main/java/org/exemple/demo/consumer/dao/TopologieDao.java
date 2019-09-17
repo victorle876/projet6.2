@@ -2,7 +2,9 @@ package org.exemple.demo.consumer.dao;
 
 import java.util.List;
 
+import org.exemple.demo.consumer.daoInterface.NiveauDaoInterface;
 import org.exemple.demo.consumer.daoInterface.TopologieDaoInterface;
+import org.exemple.demo.entities.Abonne;
 import org.exemple.demo.entities.Topologie;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -10,7 +12,7 @@ import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
-public class TopologieDao implements AbstractDao {
+public abstract class TopologieDao implements TopologieDaoInterface {
 	private AbstractDao AbstractDao ; 
 	
 	public TopologieDao(){

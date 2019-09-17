@@ -2,7 +2,9 @@ package org.exemple.demo.consumer.dao;
 
 import java.util.List;
 
+import org.exemple.demo.entities.Abonne;
 import org.exemple.demo.entities.Secteur;
+import org.exemple.demo.consumer.daoInterface.NiveauDaoInterface;
 import org.exemple.demo.consumer.daoInterface.SecteurDaoInterface;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -10,7 +12,7 @@ import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
-public class SecteurDao implements AbstractDAo {
+public abstract class SecteurDao implements SecteurDaoInterface {
 	private AbstractDao AbstractDao; 
 
 	
