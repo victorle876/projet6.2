@@ -1,5 +1,6 @@
 package org.exemple.demo.entities;
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +17,12 @@ public class Cotation implements Serializable {
     private String LibelleCotation ;
     
     private String NumDifficulte;
+    
+	public Cotation(int id, String LibelleCotation, String NumDifficulte) {
+		this.id = id;
+		this.LibelleCotation = LibelleCotation;
+		this.NumDifficulte = NumDifficulte;
+}
 
     @Column(name = "cotation_id")
     public int getId() {

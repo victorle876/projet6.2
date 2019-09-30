@@ -7,13 +7,13 @@ import org.hibernate.annotations.NamedQueries;
 import org.hibernate.annotations.NamedQuery;
 @Entity
 @Table(name = "SITE")
-@NamedQueries({
-    @NamedQuery(name = Site.Find_By_Secteur_Site, query = "SELECT Secteur_Id, site FROM Secteur s1 r WHERE s1.secteur = :secteur "),
-    
-})
+//@NamedQueries({
+//    @NamedQuery(name = Site.Find_By_Secteur_Site, query = "SELECT Secteur_Id, site FROM Secteur s1 r WHERE s1.secteur = :secteur "),
+//    
+//})
 public class Site implements Serializable{
 	
-	public static final String Find_By_Secteur_Site = "Site.FindBySecteur";
+//	public static final String Find_By_Secteur_Site = "Site.FindBySecteur";
 	
     private String LibelleSite ;
     private Timestamp DateAjout ;
@@ -26,15 +26,15 @@ public class Site implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
-    @Column(name= "Site_Id")
-    private int Site_Id;
+    @Column(name= "id")
+    private int id;
 
-    public int getSite_Id() {
-        return Site_Id;
+    public int getSiteId() {
+        return id;
     }
 
-    public void setSite_Id(int id) {
-        this.Site_Id = id;
+    public void setSiteId(int id) {
+        this.id = id;
     }
     
     @OneToMany(mappedBy = "site")
@@ -47,11 +47,33 @@ public class Site implements Serializable{
     public void setLibelleSite(String LibelleSite) {
         this.LibelleSite = LibelleSite;
     }
+    
+	public Secteur getSecteur() {
+        return secteur;
+    }
+
+    public void setSecteur(Secteur secteur) {
+        this.secteur = secteur;
+    }
 
     @Column(name= "DateAjout")
     public Timestamp getDateAjout() {
         return DateAjout;
     }
+    
+	public Site(int id, String LibelleSite, Secteur secteur,int NombreSecteur,
+			int NombreCotation , int Longueur, int HauteurMini, int HauteurMaxi,
+			Timestamp DateAjout) {
+		this.id = id;
+		this.NombreSecteur = NombreSecteur;
+		this.NombreCotation = NombreCotation;
+		this.secteur = secteur;
+		this.Longueur = Longueur;
+		this.HauteurMini = HauteurMini;
+		this.HauteurMaxi = HauteurMaxi;
+		this.LibelleSite = LibelleSite;
+		this.DateAjout = DateAjout;
+}
 
     public void setDateAjout(Timestamp DateAjout) {
         this.DateAjout = DateAjout;
@@ -62,7 +84,7 @@ public class Site implements Serializable{
         return NombreSecteur;
     }
 
-    public void setgetNombreSecteur(int NombreSecteur) {
+    public void setNombreSecteur(int NombreSecteur) {
         this.NombreSecteur = NombreSecteur;
     }
     

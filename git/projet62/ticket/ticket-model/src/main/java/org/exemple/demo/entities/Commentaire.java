@@ -22,72 +22,82 @@ import org.hibernate.annotations.NamedQuery;
 
 @Entity
 @Table(name = "COMMENTAIRE")
-@NamedQueries({
-    @NamedQuery(name = Commentaire.Find_By_Site_User, query = "SELECT commentaire, site , abonne FROM Commentaire c WHERE c.site = :site "),
-})
-public class Commentaire implements Serializable{
-	
-	public static final String Find_By_Site_User = "Commentaire.findBySiteAndAbonne";
-    
-    @Column(name= "commentaire_id")
-    private int id;
+//@NamedQueries({
+// @NamedQuery(name = Commentaire.Find_By_Site_User, query = "SELECT
+// commentaire, site , abonne FROM Commentaire c WHERE c.site = :site "),
+//})
+public class Commentaire implements Serializable {
 
-    public int getId() {
-        return id;
-    }
+//	public static final String Find_By_Site_User = "Commentaire.findBySiteAndAbonne";
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	@Column(name = "commentaire_id")
+	private int id;
 
-    private String Auteur ;
-    
-    private Timestamp DateMaj ;
-    
-    @OneToOne
-    @JoinColumn(name = "Site_Id")
-    private Site site;
-    
-    private String ZoneCommentaire ;
-    private String Etat ;
-    
-    @OneToOne
-    @JoinColumn(name = "Abonne_Id")
-    private Abonne abonne;
-    
-    @Column(name= "Auteur")
-    public String getAuteur() {
-        return Auteur;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public void setAuteur(String auteur) {
-        this.Auteur = auteur;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    @Column(name= "ZoneCommentaire")
-    public String getZoneCommentaire() {
-        return ZoneCommentaire;
-    }
+	private String Auteur;
 
-    public void setZoneCommentaire(String ZoneCommentaire) {
-        this.ZoneCommentaire = ZoneCommentaire;
-    }
+	private Timestamp DateMaj;
 
-    @Column(name= "DateMaj")
-    public Timestamp getDateMaj() {
-        return DateMaj;
-    }
+	@OneToOne
+	@JoinColumn(name = "Site_Id")
+	private Site site;
 
-    public void setDateMaj(Timestamp DateMaj) {
-        this.DateMaj = DateMaj;
-    }
+	private String ZoneCommentaire;
+	private String Etat;
 
-    @Column(name= "Etat")
-    public String getEtat() {
-        return Etat;
-    }
+	@OneToOne
+	@JoinColumn(name = "Abonne_Id")
+	private Abonne abonne;
 
-    public void setEtat(String etat) {
-        this.Etat = etat;
-    }
+	public Commentaire(int id, String Auteur,
+			String ZoneCommentaire, String Etat, Timestamp DateMaj) {
+		this.id = id;
+		this.Auteur = Auteur;
+	//	this.site = site;
+		this.ZoneCommentaire = ZoneCommentaire;
+		this.Etat = Etat;
+}
+
+	@Column(name = "Auteur")
+	public String getAuteur() {
+		return Auteur;
+	}
+
+	public void setAuteur(String auteur) {
+		this.Auteur = auteur;
+	}
+
+	@Column(name = "ZoneCommentaire")
+	public String getZoneCommentaire() {
+		return ZoneCommentaire;
+	}
+
+	public void setZoneCommentaire(String ZoneCommentaire) {
+		this.ZoneCommentaire = ZoneCommentaire;
+	}
+
+	@Column(name = "DateMaj")
+	public Timestamp getDateMaj() {
+		return DateMaj;
+	}
+
+	public void setDateMaj(Timestamp DateMaj) {
+		this.DateMaj = DateMaj;
+	}
+
+	@Column(name = "Etat")
+	public String getEtat() {
+		return Etat;
+	}
+
+	public void setEtat(String etat) {
+		this.Etat = etat;
+	}
 }

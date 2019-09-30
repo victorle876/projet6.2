@@ -1,6 +1,7 @@
 
 package org.exemple.demo.entities;
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
@@ -14,6 +15,12 @@ public class Niveau implements Serializable{
     private int id;
     
     private String LibelleNiveau ;
+    
+	public Niveau(int id, String LibelleNiveau) {
+		this.id = id;
+		this.LibelleNiveau = LibelleNiveau;
+
+}
 
     @Column(name= "niveau_id")
     public int getId() {

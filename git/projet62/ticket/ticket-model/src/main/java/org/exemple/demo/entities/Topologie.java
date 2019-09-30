@@ -9,9 +9,9 @@ import org.hibernate.annotations.NamedQuery;
 
 @Entity
 @Table(name = "TOPOLOGIE")
-@NamedQueries({
-    @NamedQuery(name = Topologie.Find_By_Topologie_Site, query = "SELECT topologie, site FROM Topologie t WHERE t.site = :site "),
-})
+//@NamedQueries({
+//    @NamedQuery(name = Topologie.Find_By_Topologie_Site, query = "SELECT topologie, site FROM Topologie t WHERE t.site = :site "),
+//})
 public class Topologie implements Serializable{
 	
 	public static final String Find_By_Topologie_Site = "Topologie.FindBySite";
@@ -35,6 +35,15 @@ public class Topologie implements Serializable{
     private Timestamp DateMaj ;
     
     private Timestamp DateParution ;
+    
+	public Topologie(int id, String LibelleTopologie, Site site, Timestamp DateMaj,
+			Timestamp DateParution) {
+		this.id = id;
+		this.LibelleTopologie = LibelleTopologie;
+		this.site = site;
+		this.DateMaj = DateMaj;
+		this.DateParution = DateParution;
+}
     public String getLibelleTopologie() {
         return LibelleTopologie;
     }

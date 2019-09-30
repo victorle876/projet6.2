@@ -17,13 +17,13 @@ import org.hibernate.annotations.NamedQuery;
 
 @Entity
 @Table(name = "RESERVATION")
-@NamedQueries({
-    @NamedQuery(name = Reservation.Find_By_Reservation_Topologie, query = "SELECT Reservation_Id, abonne , topologie FROM Reservation r WHERE r.topologie = :topologie "),
+//@NamedQueries({
+//    @NamedQuery(name = Reservation.Find_By_Reservation_Topologie, query = "SELECT Reservation_Id, abonne , topologie FROM Reservation r WHERE r.topologie = :topologie "),
     
-})
+//})
 public class Reservation implements Serializable {
 	
-	public static final String Find_By_Reservation_Topologie = "Reservation.FindByReservationAndTopologie";
+//	public static final String Find_By_Reservation_Topologie = "Reservation.FindByReservationAndTopologie";
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
@@ -42,9 +42,34 @@ public class Reservation implements Serializable {
     @OneToOne
     @JoinColumn(name = "Abonne_id")
     private Abonne abonne;
+    
+	public Reservation(int id, String Auteur, Topologie topologie,
+			Abonne abonne, Timestamp DateAjout) {
+		this.id = id;
+		this.Auteur = Auteur;
+		this.abonne = abonne;
+		this.topologie = topologie;
+		this.DateAjout = DateAjout;
+	 }
 
     public int getId() {
         return id;
+    }
+
+    public void setAbonne(Abonne abonne) {
+        this.abonne = abonne;
+    }
+    
+    public Abonne getAbonne() {
+        return abonne;
+    }
+    
+    public void setTopologie(Topologie topologie) {
+        this.topologie = topologie;
+    }
+    
+    public Topologie getTopologie() {
+        return topologie;
     }
 
     public void setId(int id) {
@@ -61,11 +86,11 @@ public class Reservation implements Serializable {
     }
 
     @Column(name= "DateAjout")
-    public Timestamp getDateAjou() {
+    public Timestamp getDateAjout() {
         return DateAjout;
     }
 
-    public void setDateAjoutjout(Timestamp DateAjout) {
+    public void setDateAjout(Timestamp DateAjout) {
         this.DateAjout = DateAjout;
     }
 

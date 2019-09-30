@@ -1,5 +1,6 @@
 package org.exemple.demo.entities;
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 import javax.persistence.*;
 
@@ -9,9 +10,7 @@ public class Secteur implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
-    
-    
-    private int SecteurId;
+    private int id;
     
     private String LibelleSecteur ;
 
@@ -20,15 +19,32 @@ public class Secteur implements Serializable {
     @OneToOne
     @JoinColumn(name = "cotation_id")
     private Cotation cotation;
+    
+	public Secteur(int id, String LibelleSecteur, Cotation cotation, int LongueurSecteur) {
+		this.id = id;
+		this.LibelleSecteur = LibelleSecteur;
+		this.LongueurSecteur = LongueurSecteur;
+		this.cotation = cotation;
+
+}
 
     @Column(name= "SecteurId")
     public int getSecteurId() {
-        return SecteurId;
+        return id;
     }
 
     public void setSecteurId(int id) {
-        this.SecteurId = id;
+        this.id = id;
     }
+    
+    public Cotation getCotation() {
+        return cotation;
+    }
+
+    public void setCotation(Cotation cotation) {
+        this.cotation = cotation;
+    }
+ 
  
     @Column(name= "LibelleSecteur")
     public String getLibelleSecteur() {

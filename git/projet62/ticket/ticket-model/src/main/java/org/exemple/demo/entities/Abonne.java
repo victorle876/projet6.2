@@ -19,7 +19,7 @@ public class Abonne implements Serializable {
 	
     private String PrenomAbonne ;
 	
-    private String DateNaissance ;
+    private Timestamp DateNaissance ;
 	
     private String Password ;
 
@@ -34,6 +34,20 @@ public class Abonne implements Serializable {
     
     @OneToMany(mappedBy = "order")
     private Reservation reservation;
+    
+    public Abonne(int id, String NomAbonne, String PrenomAbonne, String Password,
+    						String MailAbonne, String RoleAbonne, String NiveauAbonne, 
+    						Timestamp DateAdhesion,Timestamp DateNaissance) {
+        this.id = id;
+        this.NomAbonne = NomAbonne;
+        this.PrenomAbonne = PrenomAbonne;
+        this.Password = Password;
+        this.MailAbonne = MailAbonne;
+        this.NiveauAbonne = NiveauAbonne;
+        this.RoleAbonne = RoleAbonne;
+        this.DateAdhesion = DateAdhesion;
+        this.DateNaissance = DateNaissance;
+      }
 
     @Column(name= "abonne_id")
     public int getId() {
@@ -58,7 +72,7 @@ public class Abonne implements Serializable {
         return PrenomAbonne;
     }
 
-    public void setPreNomAbonne(String PrenomAbonne) {
+    public void setPrenomAbonne(String PrenomAbonne) {
         this.PrenomAbonne = PrenomAbonne;
     }
     
@@ -72,11 +86,11 @@ public class Abonne implements Serializable {
     }
     
     @Column(name= "DateNaissance")
-    public String getDateNaissance() {
+    public Timestamp getDateNaissance() {
         return DateNaissance;
     }
 
-    public void setDateNaissance(String DateNaissance) {
+    public void setDateNaissance(Timestamp DateNaissance) {
         this.DateNaissance = DateNaissance;
     }
     
